@@ -19,7 +19,7 @@ body {
 
 ul, li {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10pt;
+  font-size: 14pt;
   color: #333;
 }
 
@@ -50,10 +50,6 @@ h6 {
 
 article,
 aside,
-canvas,
-details,
-figcaption,
-figure,
 footer,
 header,
 hgroup,
@@ -62,11 +58,6 @@ nav,
 section {
   display: block;
   width: 100%;
-}
-
-figure {
-  padding: 0;
-  margin: 0;
 }
 
 #maincontent {
@@ -96,7 +87,7 @@ nav {
 
 nav h1 {
   margin: auto;
-  font-family: "Merienda";
+  font-family: "Ubuntu";
 }
 
 nav h1 a {
@@ -111,7 +102,7 @@ nav h1 a {
     padding: 10px 40px 16px;
     list-style: none;
     background-color: #eee;
-    font-size: 17px;
+    /*font-size: 17px;*/
     margin: 0;
     width: calc(100% - 80px);
 }
@@ -241,12 +232,7 @@ nav h1 a {
 
 /* ====================== Restaurant Details ====================== */
 .inside header {
-  /*
-  position: fixed;
-  top: 0;
-  */
   width: 100%;
-  /*z-index: 1000;*/
 }
 
 .inside #map-container {
@@ -262,17 +248,13 @@ nav h1 a {
 }
 
 .inside #footer {
-  /*
-  bottom: 0;
-  position: absolute;
-  */
   width: 100%;
 }
 
 #restaurant-name {
   color: #f18200;
   font-family: Arial,sans-serif;
-  font-size: 20pt;
+  font-size: 18pt;
   font-weight: 200;
   letter-spacing: 0;
   margin: 15px 0 30px;
@@ -285,21 +267,20 @@ nav h1 a {
 }
 
 #restaurant-address {
-  font-size: 12pt;
+  font-size: 13pt;
   margin: 10px 0px;
 }
 
 #restaurant-cuisine {
   background-color: #333;
   color: #ddd;
-  font-size: 12pt;
+  font-size: 14pt;
   font-weight: 300;
   letter-spacing: 10px;
   margin: 0 0 20px;
   padding: 2px 0;
   text-align: center;
   text-transform: uppercase;
-  /*width: 90%;*/
 }
 
 #restaurant-container, #reviews-container {
@@ -308,16 +289,6 @@ nav h1 a {
   padding: 0.5em;
   width: calc(100% - 1em);
 }
-
-/*
-#restaurant-container {
-
-}
-
-#reviews-container {
-  padding: 30px 40px 80px;
-}
-*/
 
 #reviews-container h2 {
   color: #f58500;
@@ -337,20 +308,27 @@ nav h1 a {
 #reviews-list li {
   background-color: #fff;
   border: 2px solid #f3f3f3;
-  display: block;
+  display: inline-block;
   list-style-type: none;
   margin: 0 0 1em;
   overflow: hidden;
   padding: 0 1em 1em;
   position: relative;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: flex-start;
 }
 
-#reviews-list li div, #reviews-list li h3 {
+#reviews-list li p.name, p.date, p.rating {
+  width: 30%
+}
+
+.date {
+  float: right;
+}
+
+.name {
+  float: left;
+}
+
+#reviews-list li h3 {
   margin: 0 0.5em;
   width: 100%;
 }
@@ -361,18 +339,6 @@ nav h1 a {
   text-transform: uppercase;
   line-height: 2em;
   height: 45px;
-}
-
-#reviews-list li .rating,
-#reviews-list li .date {
-  min-width: 160px;
-  height: 2em;
-}
-
-#reviews-list li .rating {
-  font-size: 1em;
-  color: gold;
-  height: 2em;
 }
 
 #reviews-list li .comment {
@@ -435,12 +401,15 @@ a.skip-main:focus, a.skip-main:active {
     letter-spacing: 0.2em;
   }
 
-  #reviews-list li p.rating,
-  #reviews-list li p.date {
+  #reviews-list li p.date, p.name, p.rating{
     line-height: 1em;
     font-size: 1em;
     width: calc((100% - 2 * 1em) / 2);
     min-width: 160px;
+  }
+
+  #reviews-list li p.comments {
+    font-weight: bold;
   }
 }
 
