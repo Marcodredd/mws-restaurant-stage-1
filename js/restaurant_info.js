@@ -22,7 +22,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-        mapboxToken: 'pk.eyJ1IjoibGV0ZSIsImEiOiJjamthM29ncWUwa3poM2tvaXdwYzA1ZGJmIn0.Jq4OM8l_Apa9y5YIEPQfjw',
+        mapboxToken: 'pk.eyJ1IjoibGV0ZSIsImEiOiJjamtmZmdlbmYwNml0M2tvNmRuNjAxb2ZwIn0.hS92_IFDLZxJJAuo6V8G3Q',
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -86,28 +86,15 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const address = document.getElementById('restaurant-address');
   address.innerHTML = restaurant.address;
 
-  const figure = document.getElementById('restaurant-img');
-  figure.removeAttribute('id');
-  const picture = figure.getElementsByTagName('picture')[0];
-
   const srcOfImage = DBHelper.imageUrlForRestaurant(restaurant);
   const largeImage = srcOfImage.replace('.jpg', '-800_large_2x.jpg');
   const mediumImage = srcOfImage.replace('.jpg', '-400_medium_1x.jpg');
   const smallImage = srcOfImage.replace('.jpg', '-300_small.jpg');
 
-  const source = document.createElement('source');
-  source.setAttribute('srcset', largeImage + ' 2x,' + mediumImage + ' 1x');
-  picture.appendChild(source);
-
-  const image = document.createElement('img');
-  image.className = 'restaurant-img';
-  image.src = smallImage;
-  image.setAttribute('alt', 'Image of ' + restaurant.name + ' Restaurant');
-  picture.appendChild(image);
-
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.src = smallImage;
+  image.setAttribute('alt', 'Image of ' + restaurant.name + ' Restaurant');
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -165,21 +152,26 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 /**
  * Create review HTML and add it to the webpage.
  */
-createReviewHTML = (review) => {
+  createReviewHTML = (review) => {
   const li = document.createElement('li');
+
   const name = document.createElement('p');
+  name.className = 'name';
   name.innerHTML = review.name;
   li.appendChild(name);
 
   const date = document.createElement('p');
+  date.className = 'date';
   date.innerHTML = review.date;
   li.appendChild(date);
 
   const rating = document.createElement('p');
+  rating.className = 'rating';
   rating.innerHTML = `Rating: ${review.rating}`;
   li.appendChild(rating);
 
   const comments = document.createElement('p');
+  comments.className = 'comments';
   comments.innerHTML = review.comments;
   li.appendChild(comments);
 
