@@ -153,17 +153,20 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  * Create review HTML and add it to the webpage.
  */
   createReviewHTML = (review) => {
+  const header = document.createElement('header');
+  header.className = 'review-header';
   const li = document.createElement('li');
+  li.appendChild(header);
 
   const name = document.createElement('p');
   name.className = 'name';
   name.innerHTML = review.name;
-  li.appendChild(name);
+  header.appendChild(name);
 
   const date = document.createElement('p');
   date.className = 'date';
   date.innerHTML = review.date;
-  li.appendChild(date);
+  header.appendChild(date);
 
   const rating = document.createElement('p');
   rating.className = 'rating';
