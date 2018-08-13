@@ -17,13 +17,14 @@
 
 <body class="inside">
   <!-- Beginning header -->
+  <a class="skip-main" href="#maincontent">Skip to main content</a>
   <header>
     <!-- Beginning nav -->
     <nav>
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" >
+    <ul id="breadcrumb" aria-label="breadcrumb">
       <li><a href="/">Home</a></li>
     </ul>
     <!-- End breadcrumb -->
@@ -32,10 +33,10 @@
   <!-- End header -->
 
   <!-- Beginning main -->
-  <main id="maincontent">
+  <main id="maincontent" role="application">
     <!-- Beginning map -->
     <section id="map-container">
-      <div id="map"></div>
+      <div id="map" role="application" aria-label="Restaurant Maps"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
@@ -49,7 +50,8 @@
     <!-- end restaurant -->
     <!-- Beginning reviews -->
     <section id="reviews-container">
-      <ul id="reviews-list"></ul>
+      <ul id="reviews-list">
+      </ul>
     </section>
     <!-- End reviews -->
   </main>
@@ -69,6 +71,18 @@
   <!-- Google Maps -->
  <!--  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_tKbW6A5pQ-eupxI56myUnHLqYCzOjKo&libraries=places&callback=initMap"></script> -->
   <!-- End scripts -->
+  <script>
+    if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('sw.js')
+           .then(function(registration) {
+            console.log("Service Worker Registered");
+           })
+           .catch(function(error) {
+            console.log('Service worker registration failed, error:', error);
+           });
+    }
+  </script>
 
 </body>
 

@@ -13,15 +13,16 @@
 </head>
 
 <body>
+  <a class="skip-main" href="#maincontent">Skip to main content</a>
   <header>
     <nav>
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
   </header>
 
-  <main id="maincontent" class="row">
-    <section id="map-container">
-      <div id="map"></div>
+  <main id="maincontent" class="row" role="application">
+    <section id="map-container" aria-owns="map" tabindex="-1">
+      <div id="map" role="application" aria-label="Map of restaurants"></div>
     </section>
     <section>
       <div class="filter-options">
@@ -45,6 +46,18 @@
   <footer id="footer">
     Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
+  <script >
+    if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('sw.js')
+           .then(function(registration) {
+            console.log("Service Worker Registered");
+           })
+           .catch(function(error) {
+            console.log('Service worker registration failed, error:', error);
+           });
+    }
+  </script>
 
 </body>
 
